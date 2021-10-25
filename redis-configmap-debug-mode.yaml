@@ -11,8 +11,8 @@ data:
     #
     # ./redis-server /path/to/redis.conf
     #slaveof redis-master-0.redis-master.redis.svc.cluster.local 6379
-    masterauth a-very-complex-password-here
-    requirepass a-very-complex-password-here
+    masterauth 196412th
+    requirepass 196412th
     # Note on units: when memory size is needed, it is possible to specify
     # it in the usual form of 1k 5GB 4M and so forth:
     #
@@ -61,7 +61,7 @@ data:
     # Examples:
     #
     # bind 192.168.1.100 10.0.0.1
-    #bind 127.0.0.1 ::1
+    # bind 127.0.0.1 ::1
     #
     # ~~~ WARNING ~~~ If the computer running Redis is directly exposed to the
     # internet, binding to all the interfaces is dangerous and will expose the
@@ -143,15 +143,15 @@ data:
     # directive can be used to define TLS-listening ports. To enable TLS on the
     # default port, use:
     #
-     port 0
-     tls-port 6379
+    # port 0
+    # tls-port 6379
 
     # Configure a X.509 certificate and private key to use for authenticating the
     # server to connected clients, masters or cluster peers.  These files should be
     # PEM formatted.
     #
-     tls-cert-file redis.cert
-     tls-key-file redis.key
+    # tls-cert-file redis.crt
+    # tls-key-file redis.key
 
     # Configure a DH parameters file to enable Diffie-Hellman (DH) key exchange:
     #
@@ -161,8 +161,8 @@ data:
     # clients and peers.  Redis requires an explicit configuration of at least one
     # of these, and will not implicitly use the system wide configuration.
     #
-     tls-ca-cert-file ca.crt
-     tls-ca-cert-dir /etc/ssl/certs
+    # tls-ca-cert-file ca.crt
+    # tls-ca-cert-dir /etc/ssl/certs
 
     # By default, clients (including replica servers) on a TLS port are required
     # to authenticate using valid client side certificates.
@@ -187,25 +187,25 @@ data:
     # and include "TLSv1", "TLSv1.1", "TLSv1.2", "TLSv1.3" (OpenSSL >= 1.1.1) or
     # any combination. To enable only TLSv1.2 and TLSv1.3, use:
     #
-     tls-protocols  TLSv1.3
+    # tls-protocols "TLSv1.2 TLSv1.3"
 
     # Configure allowed ciphers.  See the ciphers(1ssl) manpage for more information
     # about the syntax of this string.
     #
     # Note: this configuration applies only to <= TLSv1.2.
     #
-     tls-ciphers DEFAULT:!MEDIUM
+    # tls-ciphers DEFAULT:!MEDIUM
 
     # Configure allowed TLSv1.3 ciphersuites.  See the ciphers(1ssl) manpage for more
     # information about the syntax of this string, and specifically for TLSv1.3
     # ciphersuites.
     #
-     tls-ciphersuites TLS_CHACHA20_POLY1305_SHA256
+    # tls-ciphersuites TLS_CHACHA20_POLY1305_SHA256
 
     # When choosing a cipher, use the server's preference instead of the client
     # preference. By default, the server follows the client's preference.
     #
-     tls-prefer-server-ciphers yes
+    # tls-prefer-server-ciphers yes
 
     # By default, TLS session caching is enabled to allow faster and less expensive
     # reconnections by clients that support it. Use the following directive to disable
@@ -238,7 +238,7 @@ data:
     #                        UPSTART_JOB or NOTIFY_SOCKET environment variables
     # Note: these supervision methods only signal "process is ready."
     #       They do not enable continuous liveness pings back to your supervisor.
-    supervised no
+    supervised systemd
 
     # If a pid file is specified, Redis writes it where specified at startup
     # and removes it at exit.
@@ -266,7 +266,7 @@ data:
 
     # To enable logging to the system logger, just set 'syslog-enabled' to yes,
     # and optionally update the other syslog parameters to suit your needs.
-    # syslog-enabled yes
+     syslog-enabled yes
 
     # Specify the syslog identity.
     # syslog-ident redis
@@ -397,7 +397,7 @@ data:
     # starting the replication synchronization process, otherwise the master will
     # refuse the replica request.
     #
-
+    
     #
     # However this is not enough if you are using Redis ACLs (for Redis version
     # 6 or greater), and the default user is not capable of running the PSYNC
@@ -791,7 +791,7 @@ data:
     # AUTH <password> as usually, or more explicitly with AUTH default <password>
     # if they follow the new protocol: both will work.
     #
-
+    
 
     # Command renaming (DEPRECATED).
     #
