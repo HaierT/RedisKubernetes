@@ -44,3 +44,10 @@ redis-cli
 auth "masterauth"
 info replication
 ```
+## Set redis to debug mode
+In redis configmap set:
+```
+loglevel debug
+
+stslog-enabled yes
+```
