@@ -78,3 +78,10 @@ redis-cli --tls --cert ./redis.crt ./redis.key ./cacert ./ca.crt
 pong 
 if you recived a pong massage - you secured connection succseeded 
 ```
+## Helm Chart
+Helm chart used to easily package, configure, and deploy applications and services onto Kubernetes clusters.
+A recommended helm chart can be **Bitnami**.
+Bitnami features:
+- Tracks upstream source changes and promptly publishes new versions of this image
+- Bitnami containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs
+- Add extra security layer
