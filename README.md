@@ -4,7 +4,7 @@
 ```
 minikube
 Redis 6.x
-A laptop / virtual machines with 8GB RAM & 2 CPU
+A PC / VM with 8GB RAM & 2 CPU
 ```
 
 
@@ -50,4 +50,31 @@ In redis configmap set:
 loglevel debug
 
 stslog-enabled yes
+```
+
+## Enable TLS secure
+Need to create both redis.key & redis.crt
+```
+$openssl genrsa -out redis.key 4098
+$req -new -key redis.key -out server.csr
+
+fill in your connection detailes
+
+$openssl x509 -req -days 366 -in server.csr  -signkey redis.key -out server.crt
+
+$kubectl apply -n redis -f redis-configmap-TLSSECURED.yaml
+
+
+```
+
+verify TLS connection
+
+```
+$kubectl -n redis exec -it redis-0 sh
+
+redis-cli --tls --cert ./redis.crt ./redis.key ./cacert ./ca.crt
+
+127.0.0.1:6379>ping
+pong 
+if you recived a pong massage - you secured connection succseeded 
 ```
